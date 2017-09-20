@@ -1,0 +1,81 @@
+package luanaegabis.factorymethod;
+
+public class LGAnimal {
+	public static void main(String[] args) throws Exception
+        {
+              System.out.println("***Exemplo Padrão Factory:***\n");
+              
+              LGAnimalFactory animalFactory = new ConcreteFactory();
+              
+              LGAnimal gato = animalFactory.getTipoAnimal("Gato");
+              gato.comunicar();
+              LGAnimal cachorro = animalFactory.getTipoAnimal("Cachorro");
+              cachorro.comunicar();
+              
+              //Na tentativa de criar Pato será retornada uma exceção, pois não existe um animal do tipo Pato.
+              
+              LGAnimal pato = animalFactory.getTipoAnimal("Pato");
+              pato.comunicar();
+        }
+
+	private void comunicar() {
+		// TODO Auto-generated method stub
+		
+	}
+}
+
+Concrete Factory
+
+package luanaegabis.factorymethod;
+
+public class ConcreteFactory extends LGAnimalFactory {
+     public LGAnimal getTipoAnimal(String tipo) throws Exception
+    {
+          switch (tipo)
+          {
+                 case "Gato":
+                        return new Gato();
+                 case "Cachorro":
+                        return new Cachorro();
+                 default:
+                        throw new Exception( "O Tipo Animal "+tipo+" não pode ser instanciado.");
+          }
+    }
+
+}
+
+Gato
+
+package luanaegabis.factorymethod;
+
+public class Gato extends LGAnimal {
+  
+    public void comunicar()
+    {
+          System.out.println("Gato mia!");
+    }
+}
+
+Cachorro
+
+package luanaegabis.factorymethod;
+
+public class Cachorro extends LGAnimal {
+  
+    public void comunicar()
+    {
+          System.out.println("Cachorro late!");
+    } 
+
+}
+
+
+LGAnimalFactory
+
+package luanaegabis.factorymethod;
+
+public abstract class LGAnimalFactory {
+	
+        public abstract LGAnimal getTipoAnimal(String tipo) throws Exception;
+	}
+
