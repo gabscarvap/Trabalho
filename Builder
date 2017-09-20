@@ -1,0 +1,97 @@
+
+package luanaegabis.builder;
+
+import java.util.LinkedList;
+
+
+public class Produto {
+	
+	private LinkedList <String> partesDoVeiculo;
+	   
+    public Produto()
+    {
+          partesDoVeiculo= new LinkedList<String>();
+    }
+
+    public void adicionar(String parteDoVeiculo)
+    {
+          partesDoVeiculo.addLast(parteDoVeiculo);
+    }
+
+    public void exibir()
+    {
+          System.out.println("\n Produto completo: ");
+
+          for(int i=0; i<partesDoVeiculo.size(); i++)
+          {
+                 System.out.println(partesDoVeiculo.get(i));
+          }
+    }
+}
+
+
+// Moto
+
+package luanaegabis.builder;
+
+public class Moto implements LGBuilder {
+    private Produto produto = new Produto();
+
+    
+    public void constroiCarcaca()
+    {
+          produto.adicionar("Carcaça da Moto construída!");
+    }
+
+    
+    public void inserePneus()
+    {
+          produto.adicionar("2 rodas adicionadas!");
+    }
+
+    
+    public void adicionaFarois()
+    {
+          produto.adicionar("2 faróis inseridos!");
+    }
+
+    
+    public Produto getVeiculo()
+    {
+          return produto;
+    }
+
+}
+
+// Carro
+
+package luanaegabis.builder;
+
+public class Carro implements LGBuilder {
+	
+        private Produto produto = new Produto();
+  
+        	   public void constroiCarcaca()
+        {
+              produto.adicionar("Carcaça do Carro construída!");
+        }
+  
+               public void inserePneus()
+        {
+              produto.adicionar("4 rodas adicionadas!");
+        }
+  
+                public void adicionaFarois()
+        {
+              produto.adicionar("6 faróis inseridos!");
+        }
+  
+               public Produto getVeiculo()
+        {
+              return produto;
+        }
+
+}
+
+
+
