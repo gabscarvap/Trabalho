@@ -1,0 +1,55 @@
+public class SingletonTrabalho {
+	
+	package Luana2Gabi;
+	
+static class PoolDeRecursos1
+{
+  private static PoolDeRecursos1 _pool;
+ 
+  private PoolDeRecursos1() { }
+ 
+  public static PoolDeRecursos1 PoolDeRecursos()
+  {
+   
+   if (_pool == null)
+   { 
+    _pool = new PoolDeRecursos1();
+    System.out.println("Criado um pool de recursos para a aplicação.");
+   }
+   else
+   {
+     System.out.print("Um pool de recursos já foi criado para a aplicação.");
+    }
+    return _pool;
+ }
+}
+    
+class SingletonPatternEx
+{
+   public void main(String[] args)
+   {
+     System.out.println("***Exemplo do Padrão Singleton***\n");
+     System.out.println("Tentando criar um pool de recursos para a aplicação.");
+     PoolDeRecursos1 p1 = PoolDeRecursos1.PoolDeRecursos();
+     System.out.println("Tentando criar outro pool de recursos para a aplicação.");
+     PoolDeRecursos1 p2 = PoolDeRecursos1.PoolDeRecursos();
+ 
+     if (p1 == p2)
+     {
+        System.out.println("p1 e p2 são as mesmas instâncias.");
+      }
+ }
+}
+
+	/**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}
+
+
+
